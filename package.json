@@ -2,10 +2,6 @@
   "name": "express-es6-sample",
   "version": "0.2.0",
   "private": true,
-  "author": {
-    "name": "Jonathan Cunanan",
-    "url": "https://github.com/jcunanan05"
-  },
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "~1.4.4",
