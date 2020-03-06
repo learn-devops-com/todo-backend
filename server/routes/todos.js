@@ -2,23 +2,37 @@ import express from 'express'
 
 const router = express.Router();
 
-const todos = [
+const todoData = [
   {
-    id: 1,
-    name: "Build todo backend"
+    isComplete: false,
+    title: "Build todo backend"
   },
   {
-    id: 2,
-    name: "Build todo ui"
+    isComplete: false,
+    title: "Build todo ui"
   },
   {
-    id: 3,
-    name: "Build todo ops"
+    isComplete: false,
+    title: "Build todo ops"
   }
 ];
 
-router.get('/todos', function(req, res, next) {
-  res.json(todos);
+router.get('/', function(req, res, next) {
+  let indexedTodos = todoData.map((todo, index) => ({
+    ...todo,
+    id: index + 1,
+  }));
+  res.json(indexedTodos);
+});
+
+router.post('/', function(request, response){
+  todoData.push({
+    ...request.body,
+    isComplete: false,
+  });
+  response.send({
+    id: todoData.length
+  });
 });
 
 export default router;
